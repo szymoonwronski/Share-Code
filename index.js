@@ -33,9 +33,9 @@ app.get('/:id', (req, res) => {
 
 app.post('/', (req, res) => {
     if (isEmpty(req.body)) { res.status(400).send('400 Bad Request'); return }
-    pool.query('INSERT INTO codes (code) VALUES (?); SELECT LAST_INSERT_ID();', [req.body], (qErr, qRes) => {
+    pool.query('INSERT INTO codes (code) VALUES (?)', [req.body], (qErr, qRes) => {
         if (qErr) throw qErr
-        res.status(201).send(`Shared code ID: ${qRes[1][0].id}`)
+        res.status(201).send(`Shared code ID: ${qRes.insertId}`)
     })
 })
 

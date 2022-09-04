@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5555
 app.listen(PORT, () => console.log('server is running...'))
 
 app.get('/', (req, res) => {
-    res.status(400).sendFile(__dirname + '/help.txt')
+    res.status(200).sendFile(__dirname + '/help.txt')
 })
 
 app.get('/:id', (req, res) => {

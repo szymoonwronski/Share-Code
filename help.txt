@@ -1,9 +1,9 @@
 Kodziki API
 
 Get the code:
-curl http://kodziki.herokuapp/{id}
+curl http://kodziki.herokuapp.com/{id}
 id - The unique identifier for the code.
 
 Share the code:
-curl http://kodziki.herokuapp -X POST -H "Content-Type: text/plain" --data-binary @{path-to-file}
+curl http://kodziki.herokuapp.com -X POST -H "Content-Type: text/plain" --data-binary @{path-to-file}
 path-to-file - The file you want to share.

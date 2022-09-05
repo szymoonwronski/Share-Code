@@ -19,11 +19,11 @@ const PORT = process.env.PORT || 5555
 
 app.listen(PORT, () => console.log('server is running...'))
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.status(200).sendFile(__dirname + '/help.txt')
 })
 
-app.get('/:id', (req, res) => {
+app.get('/api/:id', (req, res) => {
     pool.query('SELECT code FROM codes WHERE id = ?', [req.params.id], (qErr, qRes) => {
         if (qErr) throw qErr
         if (isEmpty(qRes)) { res.status(404).send('404 Not Found'); return }
@@ -31,7 +31,7 @@ app.get('/:id', (req, res) => {
     })
 })
 
-app.post('/', (req, res) => {
+app.post('/api/', (req, res) => {
     if (isEmpty(req.body)) { res.status(400).send('400 Bad Request'); return }
     pool.query('INSERT INTO codes (code) VALUES (?)', [req.body], (qErr, qRes) => {
         if (qErr) throw qErr
